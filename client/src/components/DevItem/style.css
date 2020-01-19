@@ -1,0 +1,45 @@
+.devs__item {
+  padding: 16px;
+  background: #fff;
+  box-shadow: 0 0 14px 0 rgba(0, 0, 0, 0.2);
+  border-radius: 2px;
+}
+
+.devs__item header {
+  display: flex;
+  align-items: center;
+}
+
+.devs__item img {
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+}
+
+.devs__item .user-info {
+  margin-left: 10px;
+}
+
+.devs__item .user-info strong {
+  display: block;
+  font-size: 16px;
+  color: #333;
+}
+
+.devs__item .user-info span {
+  font-size: 13px;
+  color: #999;
+  margin-top: 2px;
+}
+
+.devs__item .bio {
+  color: #666;
+  font-size: 14px;
+  line-height: 20px;
+  margin: 10px 0;
+}
+
+.devs__item a {
+  color: #8e4dff;
+  font-size: 14px;
+}
