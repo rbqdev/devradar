@@ -1,6 +1,7 @@
 const axios = require('axios');
 const DevModel = require('../models/DevModel');
 const parseStringAsArray = require('../utils/parseStringAsArray');
+const { findConnections, sendMessage } = require('../socket');
 
 module.exports = {
   async list(request, response) {
@@ -12,14 +13,14 @@ module.exports = {
   async create (request, response) {
     const { github_username, techs, latitude, longitude } = request.body;
     
-    const devAlreadyExist = await DevModel.findOne({ github_username });
+    // const devAlreadyExist = await DevModel.findOne({ github_username });
 
-    if(devAlreadyExist) {
-      return response.json({ 
-        type: "error", 
-        message: "Dev already exist on database!" 
-      });
-    }
+    // if(devAlreadyExist) {
+    //   return response.json({ 
+    //     type: "error", 
+    //     message: "Dev already exist on database!" 
+    //   });
+    // }
 
     const apiResponse = await axios.get(`https://api.github.com/users/${github_username}`);
   
@@ -40,6 +41,10 @@ module.exports = {
       techs: techsArray,
       location
     });
+
+    const sendMessageTo = findConnections({latitude, longitude}, techs);
+
+    sendMessage(sendMessageTo, 'newDev', devCreated);
   
     return response.json(devCreated);
   },
