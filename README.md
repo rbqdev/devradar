@@ -1,6 +1,6 @@
 # DevRadar
 
-Aplicação completa feita na semana Oministack da RockeatSeat
+Aplicação completa feita na semana Oministack da Rocketseat
 
 ## Built With
 
